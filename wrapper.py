@@ -130,7 +130,7 @@ async def metrics():
     global connected_ips
     global total_ever_ips
     key = request.args.get("admin")
-    print(f"{key = }")
+    ip_logs.info(f"{request.remote_addr} tried `key`: {key}")
     if key != config['METRICS_PASSWORD']:
         ip_logs.info(f"{request.remote_addr} tried to access stuff (/metrics) they shouldn't D:<")
         return {"Status": "Stay out, there be dragons here..", "note": "Your attempt has been logged, please refrain from continuing. You may be IP banned if shenanigans continue."}
