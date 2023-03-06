@@ -131,10 +131,10 @@ async def metrics():
     global total_ever_ips
     key = request.args.get("admin")
     print(f"{key = }")
-    if key != config['ANISETTE_PASSWORD']:
+    if key != config['METRICS_PASSWORD']:
         ip_logs.info(f"{request.remote_addr} tried to access stuff (/metrics) they shouldn't D:<")
         return {"Status": "Stay out, there be dragons here..", "note": "Your attempt has been logged, please refrain from continuing. You may be IP banned if shenanigans continue."}
-    elif key == config['ANISETTE_PASSWORD']:
+    elif key == config['METRICS_PASSWORD']:
         ip_logs.info(f"{request.remote_addr} successfully accessed /metrics")
         return {"Status": "Okay, wise guy..", "all-since-boot-ips": total_ever_ips, "current-queued-ips": connected_ips}
 
